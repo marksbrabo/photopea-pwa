@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photopea - Editor de imagens online instalável como app">
+    <meta name="theme-color" content="#001a33">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Photopea">
+
+    <title>Photopea</title>
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/png" sizes="192x192" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 192 192'><rect fill='%23001a33' width='192' height='192'/><text x='50%' y='50%' font-size='100' fill='white' text-anchor='middle' dominant-baseline='central' font-weight='bold' font-family='Arial'>P</text></svg>">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23001a33' width='180' height='180' rx='40'/><text x='50%' y='50%' font-size='90' fill='white' text-anchor='middle' dominant-baseline='central' font-weight='bold' font-family='Arial'>P</text></svg>">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app-container">
+        <iframe id="photopea-frame" src="https://www.photopea.com"
+                allow="clipboard-read; clipboard-write; microphone; camera"
+                style="width: 100%; height: 100%; border: none; display: block;"></iframe>
+    </div>
+
+    <script>
+        // Registrar service worker para offline e cache
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('✓ Service Worker registrado'))
+                .catch(err => console.log('✗ Service Worker falhou:', err));
+        }
+
+        // Permitir instalação como PWA
+        let deferredPrompt;
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            console.log('✓ PWA pronta para instalar');
+        });
+
+        // Detectar quando o app foi instalado
+        window.addEventListener('appinstalled', () => {
+            console.log('✓ App instalado com sucesso!');
+            deferredPrompt = null;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "name": "photopea-pwa",
+  "version": "1.0.0",
+  "description": "Photopea - Editor de imagens profissional como Progressive Web App",
+  "author": "Marks Brabo",
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server . -p 8080 -c-1",
+    "serve": "http-server . --spa index.html"
+  },
+  "keywords": [
+    "photopea",
+    "pwa",
+    "progressive-web-app",
+    "editor",
+    "image",
+    "design"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marksbrabo/photopea-pwa"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
