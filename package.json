@@ -51,8 +51,8 @@
     }
   },
   "devDependencies": {
-    "electron": "^latest",
-    "electron-builder": "^latest",
+    "electron": "latest",
+    "electron-builder": "latest",
     "http-server": "^14.1.1"
   }
 }
