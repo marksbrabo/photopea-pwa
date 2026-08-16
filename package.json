@@ -5,7 +5,7 @@
   "author": "Marks Brabo",
   "license": "MIT",
   "scripts": {
-    "start": "http-server . -p 8080 -c-1",
+    "start": "node server.js",
     "serve": "http-server . --spa index.html"
   },
   "keywords": [
