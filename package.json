@@ -1,26 +1,59 @@
 {
-  "name": "photopea-pwa",
+  "name": "photopea",
   "version": "1.0.0",
-  "description": "Photopea - Editor de imagens profissional como Progressive Web App",
+  "description": "Photopea - Editor de imagens profissional como aplicativo desktop",
   "author": "Marks Brabo",
   "license": "MIT",
+  "main": "electron-main.js",
   "scripts": {
+    "electron-dev": "electron .",
+    "electron-build": "electron-builder",
     "start": "node server.js",
     "serve": "http-server . --spa index.html"
   },
   "keywords": [
     "photopea",
-    "pwa",
-    "progressive-web-app",
     "editor",
     "image",
-    "design"
+    "design",
+    "desktop"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/marksbrabo/photopea-pwa"
   },
+  "build": {
+    "appId": "com.photopea.app",
+    "productName": "Photopea",
+    "files": [
+      "electron-main.js",
+      "preload.js",
+      "package.json"
+    ],
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Graphics"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    },
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    }
+  },
   "devDependencies": {
+    "electron": "^latest",
+    "electron-builder": "^latest",
     "http-server": "^14.1.1"
   }
 }
+
